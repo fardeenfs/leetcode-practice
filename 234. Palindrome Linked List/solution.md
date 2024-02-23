@@ -3,7 +3,6 @@ Here is my solution for the problem: [234. Palindrome Linked List](https://leetc
 
 ## Simple Solution using O(n) space and O(n) time
 
-code_snippets
 ```python
 # Definition for singly-linked list.
 class ListNode:
@@ -26,7 +25,6 @@ class Solution:
 
 ## O(n) time and O(1) space - Optimal Solution
 
-code_snippets
 ```python
 # Definition for singly-linked list.
 class ListNode:
@@ -43,6 +41,7 @@ class Solution:
             fast = fast.next.next
             slow = slow.next
 
+        # Reverse the second half of the list
         prev = None
         while slow:
             tmp = slow.next
