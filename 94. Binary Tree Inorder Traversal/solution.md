@@ -1,17 +1,31 @@
-Here is my solution for the problem: [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+Here is my solution for the problem: [94. Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
 
 
 ## My Solution
 
 ```python
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
 class Solution:
-    def merge(self, intervals):
-        intervals = sorted(intervals, key = lambda i: i[0])
-        result = [intervals[0]]
-        for i in intervals[1:]:
-            if i[0] <= result[-1][1]:
-                result[-1][1] = max(result[-1][1], i[1])
-            else:
-                result.append(i)
-        return result
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        result = []
+
+        def inOrder(root):
+            if root:
+                # First recur on left child
+                inOrder(root.left)
+                # Then print the data of node
+                result.append(root.val)
+                # Now recur on right child
+                inOrder(root.right)
+
+        inOrder(root)
+        return(result) 
+
 ```
