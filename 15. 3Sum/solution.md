@@ -1,7 +1,7 @@
 Here is my solution for the problem: [15. 3Sum](https://leetcode.com/problems/3sum/)
 
 
-## My Solution (Simple)
+## My Solution
 
 ```python
 class Solution:
