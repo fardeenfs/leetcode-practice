@@ -32,7 +32,7 @@ class Solution:
             if tortoise == hare: # If the pointers meet, a cycle exists. We attempt to find the start of the cycle
                 p1 = head # Start of the linked list
                 p2 = hare # Node where the slow and fast pointers met
-                while p1 != p2: # Iterate until the next iteration from the start and meeting point meet which denote the start of the cyle
+                while p1 != p2: # Iterate until the next from the start and meeting node meet at the same node i.e. start of the cycle
                     p1 = p1.next
                     p2 = p2.next
                 return p1 
