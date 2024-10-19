@@ -4,18 +4,17 @@ Here is my solution for the problem: [199. Binary Tree Right Side View](https://
 ## My Solution (DFS - Recursive Solution)
 
 ```python
-def rightFirstTraverse(root, depth, right_side, size):
+def rightFirstTraverse(root, depth, right_side):
     if root != None:
-        if depth > size:
+        if depth > len(right_side):
             right_side.append(root.val)
-            size += 1
-        right_side, size = rightFirstTraverse(root.right, depth + 1, right_side, size)
-        right_side, size = rightFirstTraverse(root.left, depth + 1, right_side, size)
-    return right_side, size
+        right_side = rightFirstTraverse(root.right, depth + 1, right_side)
+        right_side = rightFirstTraverse(root.left, depth + 1, right_side)
+    return right_side
 
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        return rightFirstTraverse(root, 1, [], 0)[0]
+        return rightFirstTraverse(root, 1, [])
 
 ```
 
