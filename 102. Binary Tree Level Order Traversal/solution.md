@@ -4,21 +4,20 @@ Here is my solution for the problem: [102. Binary Tree Level Order Traversal](ht
 ## My Solution
 
 ```python
-def levelOrderTraverse(root, depth, memo, memo_size):
+def levelOrderTraverse(root, depth, memo):
     if root != None:
-        if memo_size < depth:
+        if len(memo) < depth:
             memo.append([root.val])
-            memo_size += 1
         else:
             memo[depth-1].append(root.val)
 
-        memo, memo_size = levelOrderTraverse(root.left, depth + 1, memo, memo_size)
-        memo, memo_size = levelOrderTraverse(root.right, depth + 1, memo, memo_size)
-    return memo, memo_size
+        memo = levelOrderTraverse(root.left, depth + 1, memo)
+        memo = levelOrderTraverse(root.right, depth + 1, memo)
+    return memo
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        return levelOrderTraverse(root, 1, [], 0)[0] 
+        return levelOrderTraverse(root, 1, []) 
         
 ```
 
