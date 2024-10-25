@@ -4,7 +4,34 @@ Here is my solution for the problem: [200. Number of Islands](https://leetcode.c
 # Approach
 Iterate through the grid. When you find a 1 that is not tracked (belongs to another island chain), increment the island count. Start a BFS from this point to find all its connection and add it to tracked, so that they are not recounted. 
 
-# My Solution
+
+# My Solution (On October 25th 2024)
+
+```python
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        all_directions = [(-1,0), (1,0), (0,1), (0, -1)]
+        islands = 0
+
+        def traverse(grid, row, column):
+            if row < 0 or row > len(grid) - 1 or column < 0 or column > len(grid[0]) - 1:
+                return
+            if grid[row][column] == "1":
+                grid[row][column] = "0"
+                for direction in all_directions:
+                    traverse(grid, row + direction[0], column + direction[1])
+                
+        for row_no, row in enumerate(grid):
+            for column_no, column in enumerate(row):
+                if grid[row_no][column_no] == "1":
+                    traverse(grid, row_no, column_no)
+                    islands += 1
+        return islands
+
+```
+
+
+# My Solution (On March 3rd 2024)
 
 ```python
 class Solution:
