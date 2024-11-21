@@ -18,30 +18,31 @@ class Trie:
         self.head = TrieNode('')
 
     def insert(self, word: str) -> None:
-        self.curr = self.head
+        curr = self.head
         for letter in word:
-            if letter not in self.curr.next:
-                self.curr.next[letter] = TrieNode(letter)
-            self.curr = self.curr.next[letter]
-        self.curr.EOW = True
+            if letter not in curr.next:
+                curr.next[letter] = TrieNode(letter)
+            curr = curr.next[letter]
+        curr.EOW = True
 
     def search(self, word: str) -> bool:
-        self.curr = self.head
+        curr = self.head
         for letter in word:
-            if letter not in self.curr.next:
+            if letter not in curr.next:
                 return False
-            self.curr = self.curr.next[letter]
-        if self.curr.EOW:
+            curr = curr.next[letter]
+        if curr.EOW:
             return True
         return False
 
 
     def startsWith(self, prefix: str) -> bool:
-        self.curr = self.head
+        curr = self.head
         for letter in prefix:
-            if letter not in self.curr.next:
+            if letter not in curr.next:
                 return False
-            self.curr = self.curr.next[letter]
+            curr = curr.next[letter]
         return True
-    
+
+
 ```
